@@ -16,6 +16,21 @@
         <servlet-name>TestServlet</servlet-name>
         <servlet-class>org.wso2.beaconManagerTest.TestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ImageUploadHandler</servlet-name>
+        <servlet-class>org.wso2.beaconManager.servlet.ImageUploadHandler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ImageDownloadHandler</servlet-name>
+        <servlet-class>org.wso2.beaconManager.servlet.ImageDownloadHandler</servlet-class>
+    </servlet>
+    
+    
+    
+    
+    
+    
+    
     
     <servlet-mapping>
         <servlet-name>AddAction</servlet-name>
@@ -28,5 +43,13 @@
     <servlet-mapping>
         <servlet-name>TestServlet</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImageUploadHandler</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImageDownloadHandler</servlet-name>
+        <url-pattern>/download</url-pattern>
     </servlet-mapping>
 </web-app>

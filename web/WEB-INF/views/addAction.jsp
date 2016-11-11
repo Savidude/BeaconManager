@@ -8,12 +8,12 @@
     <body>
         <h3>Add action</h3>
 
-        <form method="POST" action="/add_action">
+        <form id="actionForm" method="POST" action="/add_action">
             <table>
                 <tr>
                     <td>Profile &nbsp&nbsp</td>
                     <td>
-                        <select name="profile">
+                        <select id="profile" name="profile">
                             ${profileSet}
                         </select>
                     </td>
@@ -22,7 +22,7 @@
                 <tr>
                     <td>Location &nbsp&nbsp</td>
                     <td>
-                        <select name="location">
+                        <select id="location" name="location">
                             ${locationSet}
                         </select>
                     </td>
@@ -39,11 +39,6 @@
                     </td>
                 </tr>
             </table>
-            <br><br>
-
-            <div id="imageDiv" style="display: block">
-
-            </div>
 
             <div id="urlDiv" style="display: none">
                 <input type="text" name="value" placeholder="Value"/>
@@ -72,8 +67,20 @@
                 <input type="button" value="+" onClick="addInput('dynamicInput');">
             </div>
 
-            <br><br>
-            <input type="submit">
+            <br>
+            <input id="submitButton" type="submit" style="display: none">
         </form>
+
+        <div id="imageDiv" style="display: block">
+            <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="image"> &nbsp
+                <input type="submit" value="upload" onclick="upload()">
+
+                <div id="container"/>
+                <input type="hidden" name="profileHidden" id="profileHidden">
+                <input type="hidden" name="locationHidden" id="locationHidden">
+                <input type="hidden" name="typeHidden" id="typeHidden">
+            </form>
+        </div>
     </body>
 </html>
