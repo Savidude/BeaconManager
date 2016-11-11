@@ -8,9 +8,25 @@
         <servlet-name>AddAction</servlet-name>
         <servlet-class>org.wso2.beaconManager.servlet.AddAction</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RequestEndpoint</servlet-name>
+        <servlet-class>org.wso2.beaconManager.servlet.RequestEndpoint</servlet-class>        
+    </servlet>
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>org.wso2.beaconManagerTest.TestServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>AddAction</servlet-name>
         <url-pattern>/AddAction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestEndpoint</servlet-name>
+        <url-pattern>/request_endpoint</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
     </servlet-mapping>
 </web-app>

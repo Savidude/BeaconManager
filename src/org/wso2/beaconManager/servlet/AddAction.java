@@ -1,5 +1,6 @@
 package org.wso2.beaconManager.servlet;
 
+import org.wso2.beaconManager.constants.Constants;
 import org.wso2.beaconManager.database.ActionTable;
 import org.wso2.beaconManager.database.LocationTable;
 import org.wso2.beaconManager.database.ProfileTable;
@@ -38,14 +39,55 @@ public class AddAction extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Action action = new Action();
-        action.setProfileId(Integer.parseInt(request.getParameter("profile")));
-        action.setLocationId(Integer.parseInt(request.getParameter("location")));
-        action.setType(request.getParameter("type"));
-        action.setValue(request.getParameter("value"));
+        int profileId = Integer.parseInt(request.getParameter("profile"));
+        int locationId = Integer.parseInt(request.getParameter("location"));
+        String type = request.getParameter("type");
 
         actionTable = new ActionTableImpl();
-        boolean status = actionTable.addAction(action);
+
+        boolean status = false;
+        Action action = new Action();
+        action.setProfileId(profileId);
+        action.setLocationId(locationId);
+        action.setType(type);
+
+        switch (type){
+            case Constants.TYPE_IMAGE: {
+
+            }
+            case Constants.TYPE_URL: {
+                action.setValue(request.getParameter("value"));
+                status = actionTable.addAction(action);
+                break;
+            }
+            case Constants.TYPE_ENDPOINT: {
+                String requestType = request.getParameter("requestType");
+                String requestUrl = request.getParameter("requestUrl");
+
+                String[] keys = request.getParameterValues("keys");
+                String[] values = request.getParameterValues("values");
+
+                String requestParameters = "";
+                for(int i=0; i<keys.length; i++){
+                    switch (values[i]){
+                        case Constants.PARAMETER_PROFILE: {
+                            values[i] = String.valueOf(profileId);
+                            break;
+                        }
+                        case Constants.PARAMETER_LOCATION: {
+                            values[i] = String.valueOf(locationId);
+                            break;
+                        }
+                    }
+                    String var = String.format("%s=%s&",keys[i], values[i]);
+                    requestParameters += var;
+                }
+                String actionValue = String.format("%s;%s;%s", requestType, requestUrl, requestParameters);
+                action.setValue(actionValue);
+                status = actionTable.addAction(action);
+                break;
+            }
+        }
 
         if(status){
             response.getWriter().println("Success");
