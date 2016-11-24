@@ -47,7 +47,7 @@ public class AddAction extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int profileId = Integer.parseInt(request.getParameter("profile"));
         int locationId = Integer.parseInt(request.getParameter("location"));
-        String type = request.getParameter("type");
+        String type = request.getParameter("action");
 
         actionTable = new ActionTableImpl();
 
@@ -104,7 +104,8 @@ public class AddAction extends HttpServlet {
     }
 
     private String getOptions(Map<Integer, String> values){
-        String option = "<option value=\"%d\">%s</option>";
+//        String option = "<option value=\"%d\">%s</option>";
+        String option = "<li value=\"%d\"><a href=\"#\">%s</a></li>";
         String optionSet = "";
         Iterator iterator = values.entrySet().iterator();
         while (iterator.hasNext()){

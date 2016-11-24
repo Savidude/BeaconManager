@@ -17,14 +17,6 @@ public class EndpointRequestExecutor {
         boolean status = false;
 
         try {
-            URL url = new URL(requestUrl);
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setDoOutput(true);
-            connection.setDoInput(true);
-            connection.setRequestMethod(requestType.toUpperCase());
-
-            OutputStream outputStream = connection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             String requestData = "";
 
             Iterator iterator = params.entrySet().iterator();
@@ -37,6 +29,15 @@ public class EndpointRequestExecutor {
                     requestData += generateEncodedAttribute(pair.getKey().toString(), pair.getValue().toString());
                 }
             }
+
+            URL url = new URL(requestUrl + "?" + requestData);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setDoOutput(true);
+            connection.setDoInput(true);
+            connection.setRequestMethod(requestType.toUpperCase());
+
+            OutputStream outputStream = connection.getOutputStream();
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
             bufferedWriter.write(requestData);
             bufferedWriter.flush();
