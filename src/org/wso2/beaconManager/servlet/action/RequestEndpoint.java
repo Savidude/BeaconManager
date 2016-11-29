@@ -1,4 +1,4 @@
-package org.wso2.beaconManager.servlet;
+package org.wso2.beaconManager.servlet.action;
 
 import org.wso2.beaconManager.transport.EndpointRequestExecutor;
 

@@ -8,4 +8,5 @@ import org.wso2.beaconManager.util.Action;
 public interface ActionTable {
 
     boolean addAction(Action action);
+    boolean updateLocationId(int oldId, int newId);
 }

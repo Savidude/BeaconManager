@@ -37,4 +37,26 @@ public class ActionTableImpl implements ActionTable {
         }
         return status;
     }
+
+    @Override
+    public boolean updateLocationId(int oldId, int newId) {
+        boolean status = false;
+
+        try {
+            conn = BeaconManagerDatabase.getConnection();
+            String updateQuery = "UPDATE `action` SET `locationId` = ? WHERE `action`.`locationId` = ?;";
+            pstmt = conn.prepareStatement(updateQuery);
+            pstmt.setInt(1, newId);
+            pstmt.setInt(2, oldId);
+            pstmt.executeUpdate();
+            status = true;
+        } catch (SQLException e) {
+//            e.printStackTrace();
+        } finally {
+            BeaconManagerDatabase.closePreparedStatement(pstmt);
+            BeaconManagerDatabase.closeConnection(conn);
+        }
+
+        return status;
+    }
 }

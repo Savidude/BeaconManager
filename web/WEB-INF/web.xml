@@ -6,11 +6,11 @@
 
     <servlet>
         <servlet-name>AddAction</servlet-name>
-        <servlet-class>org.wso2.beaconManager.servlet.AddAction</servlet-class>
+        <servlet-class>org.wso2.beaconManager.servlet.action.AddAction</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RequestEndpoint</servlet-name>
-        <servlet-class>org.wso2.beaconManager.servlet.RequestEndpoint</servlet-class>        
+        <servlet-class>org.wso2.beaconManager.servlet.action.RequestEndpoint</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>TestServlet</servlet-name>
@@ -18,11 +18,19 @@
     </servlet>
     <servlet>
         <servlet-name>ImageUploadHandler</servlet-name>
-        <servlet-class>org.wso2.beaconManager.servlet.ImageUploadHandler</servlet-class>
+        <servlet-class>org.wso2.beaconManager.servlet.action.ImageUploadHandler</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ImageDownloadHandler</servlet-name>
-        <servlet-class>org.wso2.beaconManager.servlet.ImageDownloadHandler</servlet-class>
+        <servlet-class>org.wso2.beaconManager.servlet.action.ImageDownloadHandler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewLocations</servlet-name>
+        <servlet-class>org.wso2.beaconManager.servlet.location.ViewLocations</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditLocation</servlet-name>
+        <servlet-class>org.wso2.beaconManager.servlet.location.EditLocation</servlet-class>
     </servlet>
     
     
@@ -52,6 +60,12 @@
         <servlet-name>ImageDownloadHandler</servlet-name>
         <url-pattern>/download</url-pattern>
     </servlet-mapping>
-
-
+    <servlet-mapping>
+        <servlet-name>ViewLocations</servlet-name>
+        <url-pattern>/locations</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditLocation</servlet-name>
+        <url-pattern>/locations_edit</url-pattern>
+    </servlet-mapping>
 </web-app>
