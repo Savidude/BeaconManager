@@ -1,9 +1,5 @@
 package org.wso2.beaconManager.servlet.action;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.wso2.beaconManager.constants.Constants;
 import org.wso2.beaconManager.database.ActionTable;
 import org.wso2.beaconManager.database.LocationTable;

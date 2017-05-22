@@ -24,7 +24,8 @@
         <div class="container">
 
 
-            <form id="actionForm" method="POST" action="/add_action">
+            <%--<form id="actionForm" method="POST" action="/add_action">--%>
+            <form id="actionForm" method="POST" action="/beaconmanager/add_action">
                 <div class="grid">
                     <div class=row">
                         <div class="col-lg-1 col-md-2">
@@ -86,24 +87,6 @@
                 <div class="clearfix"></div>
                 <br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div id="urlDiv" style="display: none">
                     <input type="text" class="form-control form-control-lg" name="value" placeholder="Displayed URL"/>
                     <br>
@@ -163,7 +146,8 @@
             </form>
 
             <div id="imageDiv" style="display: block">
-                <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                <%--<form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">--%>
+                <form id="uploadForm" action="/beaconmanager/upload" method="POST" enctype="multipart/form-data">
                     <input type="file" class="btn btn-default btn-sm" name="image"> <br>
                     <input type="submit" class="btn btn-primary btn-sm" value="upload" onclick="upload()">
 

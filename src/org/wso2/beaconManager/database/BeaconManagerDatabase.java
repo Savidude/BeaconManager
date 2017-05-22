@@ -7,8 +7,8 @@ import java.sql.*;
  */
 public class BeaconManagerDatabase {
     private static final String CONN_STRING = "jdbc:mysql://localhost/beacon_manager";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String USERNAME = "wso2";
+    private static final String PASSWORD = "wso2";
 
     public static Connection getConnection(){
         try {

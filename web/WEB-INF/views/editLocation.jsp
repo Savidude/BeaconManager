@@ -28,7 +28,8 @@
 
     <div class="container">
 
-        <form method="POST", action="/location_edit">
+        <%--<form method="POST", action="/location_edit">--%>
+        <form method="POST", action="/beaconmanager/location_edit">
             <div class="grid">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
